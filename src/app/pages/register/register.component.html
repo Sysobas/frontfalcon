@@ -1,0 +1,69 @@
+<h3>Tela de Cadastro de Registros</h3>
+
+<form [formGroup]="formArchive" (ngSubmit)="sendData()">
+  <fieldset>
+    <fieldset class="grupo">
+  <div class="campo">
+    <label for="data">Data: </label>
+    <input type="date" id="data" formControlName="data">
+    <div *ngIf="!data.pristine && data.errors">
+      <p *ngIf="data.errors.required">
+        Data é obrigatória.
+      </p>
+    </div>
+  </div>
+</fieldset>
+  <div class="campo">
+    <label for="ip">IP: </label>
+    <input type="text" id="ip" formControlName="ip">
+    <div *ngIf="!ip.pristine && ip.errors">
+      <p *ngIf="ip.errors.required">
+        Digite um IP válido.
+      </p>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="requisicao">Request: </label>
+    <input type="text" id="requisicao" formControlName="requisicao">
+    <div *ngIf="!requisicao.pristine && requisicao.errors">
+      <p *ngIf="requisicao.errors.required">
+        Digite uma Requisição válida.
+      </p>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="status">Status: </label>
+    <input type="text" id="status" formControlName="status">
+    <div *ngIf="!status.pristine && status.errors">
+      <p *ngIf="status.errors.required">
+        Digite um Status válido.
+      </p>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="userAgent">User Agent: </label>
+    <input type="text" id="userAgent" formControlName="userAgent">
+    <div *ngIf="!userAgent.pristine && userAgent.errors">
+      <p *ngIf="userAgent.errors.required">
+        Digite um User Agent válido.
+      </p>
+    </div>
+  </div>
+
+  <br>
+  <fieldset class="grupo">
+  <div class="campo">
+    <button [disabled]="!formArchive.valid" class="botao submit">Enviar dados</button>
+  </div>
+  </fieldset>
+
+  <br>
+  <br>
+
+  <div>{{ formArchive.value | json}}</div>
+  <div>{{ formArchive.valid | json }}</div>
+</fieldset>
+</form>
