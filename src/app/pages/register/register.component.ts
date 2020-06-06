@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       dataForm.userAgent
     );
 
-    this.http.post('http://localhost:8080/archive/create', archive)
+    this.http.post('https://backfalcon.herokuapp.com/archive/create', archive)
       .subscribe(resposta => console.log('Cadastrado Realizado com sucesso.'));
     alert(`O registro ${archive.ip} foi cadastrado com sucesso. \n Dados: ${JSON.stringify(archive)}`);
 
