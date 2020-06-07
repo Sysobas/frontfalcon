@@ -2,7 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { MatTableDataSource, MatTableItem } from './mat-table-datasource';
+import { MatTableDataSource } from './mat-table-datasource';
+import { MatTableItem } from 'src/app/services/archive-service';
+import { BackfalconService } from 'src/app/services/backfalcon.service';
 
 @Component({
   selector: 'app-mat-table',
@@ -14,11 +16,14 @@ export class MatTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<MatTableItem>;
   dataSource: MatTableDataSource;
+  EXAMPLE_DATA: MatTableItem[];
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  constructor(private backfalconService: BackfalconService) { }
+
+  displayedColumns = ['id', 'data', 'ip', 'requisicao', 'status', 'userAgent'];
 
   ngOnInit() {
+    this.backfalconService.buscaTotal().subscribe((response) => this.dataSource.data = response as MatTableItem[]);
     this.dataSource = new MatTableDataSource();
   }
 
