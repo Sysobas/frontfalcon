@@ -8,10 +8,11 @@ import { MatTableComponent } from './pages/mat-table/mat-table.component';
 
 const routes: Routes = [
   { path: 'upload', component: UploadComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'mat-table', component: MatTableComponent }
+  { path: 'mat-table', component: MatTableComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
