@@ -13,13 +13,13 @@ import { from } from 'rxjs';
 export class RegisterComponent implements OnInit {
   formArchive: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.createFormArchive();
   }
 
-  sendData(){
+  sendData() {
     const dataForm = this.formArchive.value;
 
     const archive = new Archive(
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       dataForm.userAgent
     );
 
-    this.http.post('https://backfalcon.herokuapp.com/archive/create', archive)
+    this.http.post('http://localhost:8080/archive/create', archive)
       .subscribe(resposta => console.log('Cadastrado Realizado com sucesso.'));
     alert(`O registro ${archive.ip} foi cadastrado com sucesso. \n Dados: ${JSON.stringify(archive)}`);
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  createFormArchive(){
+  createFormArchive() {
     this.formArchive = this.fb.group({
       data: ['', Validators.compose([Validators.required])],
       ip: ['', Validators.compose([Validators.required])],
