@@ -21,7 +21,7 @@ export class UploadComponent implements OnInit {
       const formData = new FormData();
       formData.append('file', file);
 
-      this.http.post('http://localhost:8080/archive/upload', formData)
+      this.http.post('https://backfalcon.herokuapp.com/archive/upload', formData)
         .subscribe(resposta => console.log('Upload OK.'));
 
     }

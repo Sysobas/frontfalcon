@@ -9,6 +9,6 @@ export class BackfalconService {
   constructor(private http: HttpClient) { }
 
   public buscaTotal() {
-    return this.http.get('http://localhost:8080/archive/findAll');
+    return this.http.get('https://backfalcon.herokuapp.com/archive/findAll');
   }
 }
